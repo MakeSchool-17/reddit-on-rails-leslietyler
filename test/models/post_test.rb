@@ -10,12 +10,7 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test "content should be present" do
-    @post.content = "   "
-    assert_not @post.valid?
-  end
-
-  test "title should be present" do
-    @post.title = "   "
+    @post.content = ""
     assert_not @post.valid?
   end
 
@@ -24,6 +19,11 @@ class PostTest < ActiveSupport::TestCase
     assert_not @post.valid?
   end
 
+  test "title should be present" do
+    @post.title = ""
+    assert_not @post.valid?
+  end
+  
   test "title should be at most 140 characters" do
     @post.title = "a" * 141
     assert_not @post.valid?
