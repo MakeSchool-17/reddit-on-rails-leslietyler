@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304185546) do
+ActiveRecord::Schema.define(version: 20160304185502) do
 
-# Could not dump table "comments" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "note_id"
+    t.string   "note_type"
+    t.integer  "user_id"
+  end
+
+  add_index "comments", ["note_type", "note_id"], name: "index_comments_on_note_type_and_note_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "moderators", force: :cascade do |t|
     t.integer  "user_id"
@@ -48,11 +58,8 @@ ActiveRecord::Schema.define(version: 20160304185546) do
     t.string   "name"
     t.string   "password"
     t.string   "email"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "subreddit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "users", ["subreddit_id"], name: "index_users_on_subreddit_id"
 
 end

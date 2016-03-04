@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :posts
 	has_many :moderators, dependent: :destroy
-	belongs_to :subreddit
+	has_many :subreddits
 
     validates :name, presence: true, length: { maximum: 50 }
     validates :username, presence: true, length: { maximum: 50 }

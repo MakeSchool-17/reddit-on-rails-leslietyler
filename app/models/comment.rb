@@ -4,4 +4,7 @@ class Comment < ActiveRecord::Base
 	has_many :comments, as: :note, dependent: :destroy
 
     validates :content, presence: true, length: { maximum: 255 }
+	validates :user_id, presence: true
+	validates :note_id, presence: true
+	validates :note_type, presence: true
 end

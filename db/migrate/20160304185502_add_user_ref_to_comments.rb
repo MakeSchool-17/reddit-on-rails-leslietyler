@@ -1,5 +1,5 @@
 class AddUserRefToComments < ActiveRecord::Migration
   def change
-    add_column :comments, :user, :refereces
+    add_reference :comments, :user, index: true, foreign_key: true
   end
 end

@@ -4,7 +4,7 @@ class PostTest < ActiveSupport::TestCase
     def setup
         @post = Post.new(title: "Example Title",
                          content: "example content",
-                         points: 0)
+                         points: 0, user_id: 1, subreddit_id: 1)
     end
 
     test "should be valid" do
@@ -28,6 +28,16 @@ class PostTest < ActiveSupport::TestCase
 
     test "content should be at most 255 characters" do
         @post.content = "a" * 256
+        assert_not @post.valid?
+    end
+
+    test "should require user_id" do
+        @post.user_id = nil
+        assert_not @post.valid?
+    end
+
+    test "should require subreddit_id" do
+        @post.subreddit_id = nil
         assert_not @post.valid?
     end
 end
