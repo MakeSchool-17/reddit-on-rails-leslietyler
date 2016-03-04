@@ -11,14 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303221613) do
+ActiveRecord::Schema.define(version: 20160304185546) do
 
-  create_table "comments", force: :cascade do |t|
-    t.string   "content"
-    t.integer  "points"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "comments" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "moderators", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,9 +27,14 @@ ActiveRecord::Schema.define(version: 20160303221613) do
     t.string   "title"
     t.string   "content"
     t.integer  "points"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.integer  "subreddit_id"
   end
+
+  add_index "posts", ["subreddit_id"], name: "index_posts_on_subreddit_id"
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "subreddits", force: :cascade do |t|
     t.string   "title"
@@ -47,8 +48,11 @@ ActiveRecord::Schema.define(version: 20160303221613) do
     t.string   "name"
     t.string   "password"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "subreddit_id"
   end
+
+  add_index "users", ["subreddit_id"], name: "index_users_on_subreddit_id"
 
 end
