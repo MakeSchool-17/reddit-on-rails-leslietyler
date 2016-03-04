@@ -15,9 +15,16 @@ class SubredditTest < ActiveSupport::TestCase
         assert_not @subreddit.valid?
     end
 
-    test "title should be at most 140 characters" do
-        @subreddit.title = "a" * 141
+    test "title should be at most 21 characters" do
+        @subreddit.title = "a" * 22
         assert_not @subreddit.valid?
+    end
+
+    test "title should be unique" do
+        duplicate_subreddit = @subreddit.dup
+        duplicate_subreddit.title = @subreddit.title.upcase
+        @subreddit.save
+        assert_not duplicate_subreddit.valid?
     end
 
     test "description should be present" do
