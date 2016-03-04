@@ -12,6 +12,7 @@
 - As a User, I want to be able to upvote/downvote a Comment.
 - As a User, I want to be able to delete my Post.
 - As a User, I want to be able to delete my Comment.
+- As a User, I want to be able to visit a slug and be directed to the relevant Subreddit.
 - As a Moderator, I want to be able to edit my Subreddit.
 - As a Moderator, I want to be able to delete my Subreddit.
 - As a Moderator, I want to be able to delete any Post in my Subreddit.
