@@ -6,6 +6,8 @@ class SubredditController < ApplicationController
     end
 
     def show
+        @current_subreddit = Subreddit.find(params[:id])
+        @feed_items = @current_subreddit.feed
     end
 
     def edit
