@@ -13,6 +13,17 @@ class SubredditsController < ApplicationController
     end
 
     def edit
+        @subreddit = Subreddit.find(params[:id])
+    end
+
+    def update
+        @subreddit = Subreddit.find(params[:id])
+        if @subreddit.update_attributes(subreddit_params)
+          flash[:success] = "Subreddit updated"
+          redirect_to @subreddit
+        else
+          render 'edit'
+        end
     end
 
     def create
