@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #
-  # get 'subreddit/new'
-  # get 'subreddit/index'
-  # get 'subreddit/show'
-  # get 'subreddit/edit'
+  root                    'subreddit#new'
+  # get 'new_subreddit'  => 'subreddit#new'
+  # get 'subreddits'     => 'subreddit#index'
+  # get 'subreddit/:id', to: 'subreddit#show', as: 'subreddit'
+  # get 'edit_subreddit' => 'subreddit#edit'
 
   resources :subreddit
   # root 'welcome#index'

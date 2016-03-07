@@ -26,10 +26,20 @@ users = User.order(:created_at).take(6)
 
 Subreddit.create!(title: "Subreddit Title Ex",
                   description: "Example Description")
+Subreddit.create!(title: "Subreddit Title Ex2",
+                  description: "Example Description2")
+
 
 50.times do
     title = Faker::Lorem.sentence(5)
     content = Faker::Lorem.sentence(5)
     subreddit = Subreddit.all.first
+    users.each { |user| user.posts.create!(title: title, content: content, subreddit_id: subreddit.id) }
+end
+
+25.times do
+    title = Faker::Lorem.sentence(5)
+    content = Faker::Lorem.sentence(5)
+    subreddit = Subreddit.all.second
     users.each { |user| user.posts.create!(title: title, content: content, subreddit_id: subreddit.id) }
 end

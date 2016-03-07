@@ -3,6 +3,7 @@ class SubredditController < ApplicationController
     end
 
     def index
+        @subreddits = Subreddit.all
     end
 
     def show
