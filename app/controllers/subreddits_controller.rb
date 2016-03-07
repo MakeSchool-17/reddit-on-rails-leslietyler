@@ -14,4 +14,18 @@ class SubredditsController < ApplicationController
 
     def edit
     end
+
+    def create
+        @subreddit = Subreddit.new(subreddit_params)
+        if @subreddit.save
+            redirect_to subreddit_path(@subreddit.id)
+        else
+            render 'new'
+        end
+    end
+
+    private
+        def subreddit_params
+            params.require(:subreddit).permit(:title, :description)
+        end
 end
