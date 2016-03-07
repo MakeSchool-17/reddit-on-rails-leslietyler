@@ -1,5 +1,6 @@
-class SubredditController < ApplicationController
+class SubredditsController < ApplicationController
     def new
+        @subreddit = Subreddit.new
     end
 
     def index
