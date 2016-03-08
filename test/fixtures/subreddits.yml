@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyString
+subreddit_one:
+  title: Example Title
+  description: Example description
 
-two:
-  title: MyString
-  description: MyString
+subreddit_two:
+  title: Example Title 2
+  description: example description 2

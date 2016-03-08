@@ -52,4 +52,5 @@ class SubredditTest < ActiveSupport::TestCase
         @subreddit.description = "a" * 1501
         assert_not @subreddit.valid?
     end
+
 end
