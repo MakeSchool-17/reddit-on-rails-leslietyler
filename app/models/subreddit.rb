@@ -1,4 +1,7 @@
 class Subreddit < ActiveRecord::Base
+	extend FriendlyId
+	friendly_id :slug, use: [:slugged, :finders]
+
 	before_create :create_slug
 
 	has_many :moderators
