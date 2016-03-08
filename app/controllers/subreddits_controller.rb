@@ -28,6 +28,7 @@ class SubredditsController < ApplicationController
 
     def create
         @subreddit = Subreddit.new(subreddit_params)
+
         if @subreddit.save
             redirect_to subreddit_path(@subreddit.id)
         else

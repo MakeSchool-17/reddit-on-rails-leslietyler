@@ -20,6 +20,22 @@ class SubredditTest < ActiveSupport::TestCase
         assert_not @subreddit.valid?
     end
 
+    test "title should be valid" do
+        valid_titles = ["here's an example", "one two three", "blue fish"]
+        valid_titles.each do |valid_title|
+            @subreddit.title = valid_title
+            assert @subreddit.valid? "#{valid_title.inspect} should be valid"
+        end
+    end
+
+    test "title should be invalid" do
+        invalid_titles = ["/does this work?", "why use ()", "   ", "@&*#|{}"]
+        invalid_titles.each do |invalid_title|
+            @subreddit.title = invalid_title
+            assert_not @subreddit.valid? "#{invalid_title.inspect} should be invalid"
+        end
+    end
+
     test "title should be unique" do
         duplicate_subreddit = @subreddit.dup
         duplicate_subreddit.title = @subreddit.title.upcase
