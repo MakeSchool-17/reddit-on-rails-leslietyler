@@ -29,8 +29,8 @@ class PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.user_id = 1
         @post.points = 0
-        if @post.save
-            redirect_to subreddit_post_path(post.subreddit_id, post.id)
+        if @post.save!
+            redirect_to subreddit_post_path(@post.subreddit_id, @post.id)
         else
             render 'new'
         end
