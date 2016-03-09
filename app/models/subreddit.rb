@@ -21,6 +21,7 @@ class Subreddit < ActiveRecord::Base
 	private
 		def create_slug
 			self.slug = self.title
-			self.slug = self.slug.gsub!(/\s/, '-').downcase
+			self.slug = self.slug.downcase
+			self.slug.gsub!(/\s/, '-')
 		end
 end

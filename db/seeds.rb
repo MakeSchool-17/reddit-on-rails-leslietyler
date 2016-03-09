@@ -24,9 +24,9 @@ end
 
 users = User.order(:created_at).take(6)
 
-Subreddit.create!(title: "Subreddit Title Ex",
+Subreddit.create!(title: "One",
                   description: "Example Description")
-Subreddit.create!(title: "Subreddit Title Ex2",
+Subreddit.create!(title: "Two",
                   description: "Example Description2")
 
 
