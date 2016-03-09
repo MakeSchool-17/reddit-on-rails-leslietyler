@@ -1,3 +1,3 @@
 <li id="post-<%= post.id %>">
-    <%#= link_to post.title, subreddit_post_path(@subreddit.id,post.id) %>
+    <%= link_to post.title, subreddit_post_path(post.subreddit_id, post.id) %>
 </li>
