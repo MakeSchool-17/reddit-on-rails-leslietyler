@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     resources :subreddits do
     	resources :posts
 	end
+
+	resources :posts, only: [:new, :create]
 end
