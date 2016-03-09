@@ -27,9 +27,10 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
-
+        @post.user_id = 1
+        @post.points = 0
         if @post.save
-            redirect_to post_path(@post.id)
+            redirect_to subreddit_post_path(post.subreddit_id, post.id)
         else
             render 'new'
         end
@@ -37,6 +38,6 @@ class PostsController < ApplicationController
 
     private
         def post_params
-            params.require(:post).permit(:title, :description)
+            params.require(:post).permit(:title, :content, :subreddit_id, :content_type)
         end
 end

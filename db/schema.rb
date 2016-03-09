@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308191817) do
+ActiveRecord::Schema.define(version: 20160309191335) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20160308191817) do
     t.datetime "updated_at",   null: false
     t.integer  "user_id"
     t.integer  "subreddit_id"
+    t.string   "content_type"
   end
 
   add_index "posts", ["subreddit_id"], name: "index_posts_on_subreddit_id"

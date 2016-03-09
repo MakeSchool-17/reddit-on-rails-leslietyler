@@ -17,7 +17,7 @@
 			<%= radio_button_tag(:content_type, "text") %>
 			<%= label_tag(:content_text, "This is a text post") %>
 
-
+			<%= select_tag(:subreddit_id, options_for_select([['One', 1], ['Two', 2]]) )%>
 
 			<%= f.submit "Create Post", class: "btn btn-primary" %>
 		<% end %>
