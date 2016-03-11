@@ -6,4 +6,8 @@
       <h3><%= @current_subreddit.title %></h3>
       <%= render 'shared/feed' %>
     </div>
+    <div class="col-md-4 ">
+      </br>
+      <%= button_to "New Post", new_post_path, :method => "get", :class => "btn btn-primary btn-block"%>
+    </div>
   </div>
