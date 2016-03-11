@@ -4,12 +4,12 @@ class SubredditsController < ApplicationController
     end
 
     def index
-        @subreddits = Subreddit.all
+        @subreddits = Subreddit.paginate(page: params[:page])
     end
 
     def show
         @current_subreddit = Subreddit.find(params[:id])
-        @feed_items = @current_subreddit.feed
+        @feed_items = @current_subreddit.feed.paginate(page: params[:page])
     end
 
     def edit

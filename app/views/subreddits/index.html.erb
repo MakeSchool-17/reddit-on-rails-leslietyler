@@ -1,8 +1,16 @@
 <% provide(:title, 'Subreddits') %>
 
 <div class="row">
+
+	<%= will_paginate %>
     <div class="col-md-8">
         <h3>Subreddits</h3>
         <%= render 'shared/subreddits' %>
+    </div>
+    <%= will_paginate %>
+    
+    <div class="col-md-4 ">
+      </br>
+      <%= button_to "New Subreddit", new_subreddit_path, :method => "get", :class => "btn btn-primary btn-block"%>
     </div>
 </div>
