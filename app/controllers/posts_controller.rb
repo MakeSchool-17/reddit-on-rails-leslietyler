@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
     def new
+        @subreddits = Subreddit.all
         @post = Post.new
     end
 

@@ -11,14 +11,22 @@
 
 			<%= f.label :content %>
 			<%= f.text_field :content, class: 'form-control' %>
-
-			<%= f.select(:subreddit_id, options_for_select([['One', 1], ['Two', 2]]) )%>
-
+			<% options = [] %>
+			<% @subreddits.each do |subreddit| %>
+			   <% options.push([subreddit.title,subreddit.id]) %>
+			<%end %>
+			</br>
+			Subreddit:
+			<%= f.select(:subreddit_id, options_for_select(options) )%>
+			</br>
+			</br>
 			<%= f.radio_button(:content_type, "url") %>
 			<%= f.label(:content_url, "This is a URL post") %>
+			</br>
 			<%= f.radio_button(:content_type, "text") %>
 			<%= f.label(:content_text, "This is a text post") %>
-
+			</br>
+			</br>
 			<%= f.submit "Create Post", class: "btn btn-primary" %>
 		<% end %>
 	</div>
