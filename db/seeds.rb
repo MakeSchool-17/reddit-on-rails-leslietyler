@@ -43,3 +43,10 @@ end
     subreddit = Subreddit.all.second
     users.each { |user| user.posts.create!(title: title, content: content, subreddit_id: subreddit.id) }
 end
+
+posts = Post.order(:created_at).take(3)
+
+10.times do
+    content = Faker::Lorem.sentence(3)
+    posts.each { |post| post.comments.create!(content: content, user_id: 1)}
+end
