@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     end
 
     def show
-        @current_comment = Comment.find(params[:id])
+        @current_post = Post.find(params[:id])
     end
 
     def edit
@@ -18,10 +18,10 @@ class CommentsController < ApplicationController
     def update
         @comment = Comment.find(params[:id])
         if @comment.update_attributes(comment_params)
-            flash[:success] = "Comment updated"
-            redirect_to @comment
+          flash[:success] = "Comment updated"
+          redirect_to @post
         else
-            render 'edit'
+          render 'edit'
         end
     end
 
@@ -29,15 +29,15 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         @comment.user_id = 1
         @comment.points = 0
-        # if @comment.save!
-        #     redirect_to subreddit_post_path(@comment.subreddit_id, @post.id)
-        # else
-        #     render 'new'
-        # end
+        if @pcommentost.save!
+            redirect_to subreddit_post_path(@comment.post_id, @comment.id)
+        else
+            render 'new'
+        end
     end
 
     private
         def comment_params
-            params.require(:comment).permit(:content, :user_id)
+            params.require(:comment).permit(:content, :post_id)
         end
 end
