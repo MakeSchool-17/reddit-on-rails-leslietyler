@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         @comment.user_id = 1
         @comment.points = 0
-        if @pcommentost.save!
+        if @comment.save
             redirect_to subreddit_post_path(@comment.post_id, @comment.id)
         else
             render 'new'
